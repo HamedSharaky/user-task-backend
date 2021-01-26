@@ -3,7 +3,9 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using UserTask.Application.Common.Exceptions;
 using UserTask.Application.Common.Interfaces;
+using UserTask.Application.Users.Commands.DeleteUser.Dtos;
 using UserTask.Domain.Entities.User;
 
 namespace UserTask.Application.Users.Commands.DeleteUser
@@ -19,17 +21,25 @@ namespace UserTask.Application.Users.Commands.DeleteUser
         }
         public async Task<DeleteUserResponse> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
+            var response = new DeleteUserResponse();
+
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
             if (user == null)
             {
-                return new DeleteUserResponse { Succeeded = false};
+                throw new NotFoundException("User", request.Id);
+                //return new DeleteUserResponse { Succeeded = false};
             }
-             _dbContext.Users.Remove(user);
+            _dbContext.Users.Remove(user);
             if (await _dbContext.SaveChangesAsync(cancellationToken) <= 0)
             {
-                return new DeleteUserResponse { Succeeded = false };
+                throw  new DeleteFailureException("User", request.Id, "");
+                //return new DeleteUserResponse { Succeeded = false };
             }
-            return new DeleteUserResponse { Succeeded = true };
+            else
+            {
+                response.Succeeded = true ;
+            }
+            return response;
         }
     }
 }

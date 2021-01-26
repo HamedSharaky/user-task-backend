@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace UserTask.Application.User.Queries.GetUserList
 {
-    public class GetUserListQueryHandler : IRequestHandler<GetUserListQuery, UserListVm>
+    public class GetUserListQueryHandler : IRequestHandler<GetUserListQuery, UserListDto>
     {
         private readonly IUserTaskDbContext _context;
         private readonly IMapper _mapper;
@@ -19,15 +19,15 @@ namespace UserTask.Application.User.Queries.GetUserList
             _mapper = mapper;
         }
 
-        public async Task<UserListVm> Handle(GetUserListQuery request, CancellationToken cancellationToken)
+        public async Task<UserListDto> Handle(GetUserListQuery request, CancellationToken cancellationToken)
         {
             var users = await _context.Users
-                .ProjectTo<UserLookupDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<UserDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
-            var vm = new UserListVm
+            var vm = new UserListDto
             {
-                User = users
+                UsersDto = users
             };
 
             return vm;

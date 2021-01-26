@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UserTask.Application.Common.Exceptions;
 using UserTask.Application.Common.Interfaces;
+using UserTask.Application.Users.Queries.GetUserDetail.Dtos;
 using UserTask.Domain.Entities.User;
 
 namespace UserTask.Application.Users.Queries.GetUserDetail

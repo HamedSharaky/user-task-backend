@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UserTask.Application.Common.Interfaces;
 using UserTask.Application.Common.Mappings;
 using UserTask.Application.Common.Models;
+using UserTask.Application.Users.Commands.CreateUser.Dtos;
 using UserTask.Domain.Enumerations.User;
 
 namespace UserTask.Application.Users.Commands.CreateUser
@@ -61,7 +62,5 @@ namespace UserTask.Application.Users.Commands.CreateUser
 
     }
 
-    public class CreateUserResponse : BaseResponse, IBaseResponse
-    {
-    }
+    
 }

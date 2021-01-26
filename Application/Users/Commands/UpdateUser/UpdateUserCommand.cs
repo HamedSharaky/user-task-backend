@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UserTask.Application.Common.Interfaces;
 using UserTask.Application.Common.Models;
+using UserTask.Application.Users.Commands.UpdateUser.Dtos;
 using UserTask.Domain.Enumerations.User;
 
 namespace UserTask.Application.Users.Commands.UpdateUser
@@ -20,7 +21,5 @@ namespace UserTask.Application.Users.Commands.UpdateUser
         public string Phone { get; set; }
     }
 
-    public class UpdateUserResponse : BaseResponse, IBaseResponse
-    {
-    }
+    
 }

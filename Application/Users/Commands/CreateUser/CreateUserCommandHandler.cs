@@ -3,6 +3,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using UserTask.Application.Common.Interfaces;
+using UserTask.Application.Users.Commands.CreateUser.Dtos;
 using UserTask.Domain.Entities.User;
 
 namespace UserTask.Application.Users.Commands.CreateUser
@@ -18,13 +19,15 @@ namespace UserTask.Application.Users.Commands.CreateUser
         }
         public async Task<CreateUserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
+            var response = new CreateUserResponse();
+
             var newUser = _mapper.Map<Domain.Entities.User.User>(request);
             await _dbContext.Users.AddAsync(newUser, cancellationToken);
-            if (await _dbContext.SaveChangesAsync(cancellationToken) <= 0)
+            if (await _dbContext.SaveChangesAsync(cancellationToken) > 0)
             {
-                return new CreateUserResponse { Succeeded = false };
+                response.Succeeded = true;
             }
-            return new CreateUserResponse { Succeeded = true };
+            return response;
         }
     }
 }

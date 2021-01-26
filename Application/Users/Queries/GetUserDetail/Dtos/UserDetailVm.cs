@@ -1,10 +1,9 @@
-﻿using AutoMapper;
-using System;
+﻿using System;
+using AutoMapper;
 using UserTask.Application.Common.Mappings;
-using UserTask.Domain.Entities.User;
 using UserTask.Domain.Enumerations.User;
 
-namespace UserTask.Application.Users.Queries.GetUserDetail
+namespace UserTask.Application.Users.Queries.GetUserDetail.Dtos
 {
     public class UserDetailVm : IMapFrom<UserTask.Domain.Entities.User.User> 
     {

@@ -9,8 +9,7 @@ namespace UserTask.Application.Users.Commands.CreateUser
         public CreateUserCommandValidator()
         {
             RuleFor(x => x.Name).NotEmpty();
-            RuleFor(x => x.Address).MaximumLength(60);
-            RuleFor(x => x.Address).MaximumLength(11);
+            RuleFor(x => x.Address).MaximumLength(200).MinimumLength(5);
             RuleFor(x => x.Position).Must(po => Enum.IsDefined(typeof(Position), po));
         }
     }

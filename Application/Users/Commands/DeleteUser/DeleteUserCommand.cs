@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using UserTask.Application.Common.Interfaces;
 using UserTask.Application.Common.Models;
+using UserTask.Application.Users.Commands.DeleteUser.Dtos;
 
 namespace UserTask.Application.Users.Commands.DeleteUser
 {
@@ -9,7 +10,5 @@ namespace UserTask.Application.Users.Commands.DeleteUser
         public int Id { get; set; }
     }
 
-    public class DeleteUserResponse : BaseResponse, IBaseResponse
-    {
-    }
+    
 }

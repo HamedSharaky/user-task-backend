@@ -4,6 +4,7 @@ using System.Reflection;
 using AutoMapper;
 using UserTask.Application.Users.Commands.CreateUser;
 using UserTask.Application.Users.Commands.UpdateUser;
+using UserTask.Application.Users.Commands.UpdateUser.Dtos;
 
 namespace UserTask.Application.Common.Mappings
 {

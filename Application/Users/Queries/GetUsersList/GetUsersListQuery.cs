@@ -2,7 +2,7 @@
 
 namespace UserTask.Application.User.Queries.GetUserList
 {
-    public class GetUserListQuery : IRequest<UserListVm>
+    public class GetUserListQuery : IRequest<UserListDto>
     {
     }
 }

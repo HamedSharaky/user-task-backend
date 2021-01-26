@@ -2,8 +2,8 @@
 
 namespace UserTask.Application.User.Queries.GetUserList
 {
-    public class UserListVm
+    public class UserListDto
     {
-        public IList<UserLookupDto> User { get; set; }
+        public IList<UserDto> UsersDto { get; set; }
     }
 }
